@@ -20,11 +20,11 @@ else:
     base_url = "http://localhost:8000"
 
 router = DefaultRouter()
-router.register(r'teams', TeamViewSet)
-router.register(r'users', UserProfileViewSet)
-router.register(r'activities', ActivityViewSet)
-router.register(r'leaderboard', LeaderboardViewSet)
-router.register(r'workouts', WorkoutViewSet)
+router.register(r'teams', TeamViewSet, basename='team')
+router.register(r'users', UserProfileViewSet, basename='user')
+router.register(r'activities', ActivityViewSet, basename='activity')
+router.register(r'leaderboard', LeaderboardViewSet, basename='leaderboard')
+router.register(r'workouts', WorkoutViewSet, basename='workout')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

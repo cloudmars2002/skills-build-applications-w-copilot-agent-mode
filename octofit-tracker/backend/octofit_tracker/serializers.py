@@ -9,6 +9,7 @@ class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = ["id", "name", "city"]
+        read_only_fields = ["id"]
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -17,6 +18,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ["id", "name", "email", "superhero", "team"]
+        read_only_fields = ["id"]
 
 
 class WorkoutSerializer(serializers.ModelSerializer):
@@ -25,6 +27,7 @@ class WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
         fields = ["id", "title", "focus_area", "intensity"]
+        read_only_fields = ["id"]
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -41,6 +44,7 @@ class ActivitySerializer(serializers.ModelSerializer):
             "calories_burned",
             "recorded_at",
         ]
+        read_only_fields = ["id", "recorded_at"]
 
 
 class LeaderboardSerializer(serializers.ModelSerializer):
@@ -49,3 +53,4 @@ class LeaderboardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Leaderboard
         fields = ["id", "user", "team", "points", "rank"]
+        read_only_fields = ["id"]

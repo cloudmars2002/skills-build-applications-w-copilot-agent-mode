@@ -48,6 +48,9 @@ class Activity(models.Model):
     class Meta:
         db_table = "activities"
 
+    def __str__(self):
+        return f"{self.user.name} - {self.workout.title}"
+
 
 class Leaderboard(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="leaderboard_rows")
@@ -58,3 +61,6 @@ class Leaderboard(models.Model):
     class Meta:
         db_table = "leaderboard"
         ordering = ["rank", "-points"]
+
+    def __str__(self):
+        return f"#{self.rank} {self.user.name} ({self.points})"

@@ -24,25 +24,25 @@ def api_root(request):
 
 
 class TeamViewSet(viewsets.ModelViewSet):
-    queryset = Team.objects.all()
+    queryset = Team.objects.order_by("id")
     serializer_class = TeamSerializer
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
-    queryset = UserProfile.objects.select_related("team").all()
+    queryset = UserProfile.objects.select_related("team").order_by("id")
     serializer_class = UserProfileSerializer
 
 
 class ActivityViewSet(viewsets.ModelViewSet):
-    queryset = Activity.objects.select_related("user", "team", "workout").all()
+    queryset = Activity.objects.select_related("user", "team", "workout").order_by("id")
     serializer_class = ActivitySerializer
 
 
 class LeaderboardViewSet(viewsets.ModelViewSet):
-    queryset = Leaderboard.objects.select_related("user", "team").all()
+    queryset = Leaderboard.objects.select_related("user", "team").order_by("rank", "-points")
     serializer_class = LeaderboardSerializer
 
 
 class WorkoutViewSet(viewsets.ModelViewSet):
-    queryset = Workout.objects.all()
+    queryset = Workout.objects.order_by("id")
     serializer_class = WorkoutSerializer
